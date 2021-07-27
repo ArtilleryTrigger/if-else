@@ -1,0 +1,57 @@
+@mixin stil($takım) {
+    @if ($takım == "fb") {
+        background-color: blue
+    }    
+    @else if ($takım == "gs") {
+        background-color: red
+    }    
+    @else if ($takım == "bjk") {
+        background-color: black
+    }
+    @else {
+        background-color: purple
+    }    
+};
+
+
+
+.kutu{
+    float: left;
+    padding: 10px 15px;
+    @include stil("gs")
+}
+
+// each döngüleri
+
+$boyutlar: (
+    1:100,
+    2:200,
+    3:300,
+    4:400,
+    5:500,
+);
+
+@each $isim, $boyut in $boyutlar {
+    .b-#{$isim}{
+        float: left;
+        width: $boyut + px;
+    }
+}
+
+//for döngüsü
+
+@for $i from 1 through 5 {
+    .ahmet#{$i}{
+        float: left;
+        width: $i * 100 +px;
+    }
+}
+
+$sayı : 1;
+@while ($sayı <= 5) {
+    .k-#{$sayı}{
+        float: left;
+        width: $sayı * 100 +px;
+    }
+    $sayı: $sayı + 1;
+}
